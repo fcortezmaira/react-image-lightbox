@@ -303,7 +303,7 @@ class ReactImageLightbox extends Component {
         true
       );
     } else {
-      return null;
+      return {};
     }
 
     return {
@@ -312,6 +312,7 @@ class ReactImageLightbox extends Component {
       width: this.imageCache[imageSrc].width,
       targetHeight: fitSizes.height,
       targetWidth: fitSizes.width,
+      style: this.props.imageStyle,
     };
   }
 
@@ -1315,6 +1316,7 @@ class ReactImageLightbox extends Component {
 
       const imageStyle = {
         ...transitionStyle,
+        ...bestImageInfo.style,
         ...ReactImageLightbox.getTransform({
           ...transforms,
           ...bestImageInfo,
@@ -1758,6 +1760,7 @@ ReactImageLightbox.propTypes = {
   closeLabel: PropTypes.string,
 
   imageLoadErrorMessage: PropTypes.node,
+  imageStyle: PropTypes.object,
 };
 
 ReactImageLightbox.defaultProps = {
@@ -1793,6 +1796,7 @@ ReactImageLightbox.defaultProps = {
   zoomInLabel: 'Zoom in',
   zoomOutLabel: 'Zoom out',
   imageLoadErrorMessage: 'This image failed to load',
+  imageStyle: {},
 };
 
 export default ReactImageLightbox;
